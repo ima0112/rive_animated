@@ -1,7 +1,10 @@
 import 'dart:ui';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:rive/rive.dart';
+
+import 'widgets/animated_btn.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
@@ -11,6 +14,14 @@ class OnboardingScreen extends StatefulWidget {
 }
 
 class _OnboardingScreenState extends State<OnboardingScreen> {
+  late RiveAnimationController _btnAnimationController;
+
+  @override
+  void initState() {
+    _btnAnimationController = OneShotAnimation('active', autoplay: false);
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,31 +52,40 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             ),
           ),
 
-          const SafeArea(
-              child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 32.0),
-            child: Column(
-              children: [
-                SizedBox(
-                  width: 260,
-                  child: Column(
-                    children: [
-                      Text(
-                        'Learn design & code',
-                        style: TextStyle(
-                          fontSize: 60,
-                          fontFamily: 'Poppins',
-                          height: 1.2,
+          SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 32.0),
+              child: Column(
+                children: [
+                  const SizedBox(
+                    width: 260,
+                    child: Column(
+                      children: [
+                        Text(
+                          'Learn design & code',
+                          style: TextStyle(
+                            fontSize: 60,
+                            fontFamily: 'Poppins',
+                            height: 1.2,
+                          ),
                         ),
-                      ),
-                      SizedBox(height: 16),
-                      Text("Don't skip design. Build real apps with Flutter.")
-                    ],
+                        SizedBox(height: 16),
+                        Text("Don't skip design. Build real apps with Flutter.")
+                      ],
+                    ),
                   ),
-                ),
-              ],
+
+                  //Animated Button
+                  AnimatedBtn(
+                    btnAnimationController: _btnAnimationController,
+                    onPress: () {
+                      _btnAnimationController.isActive = true;
+                    },
+                  ),
+                ],
+              ),
             ),
-          ))
+          )
         ],
       ),
     );
