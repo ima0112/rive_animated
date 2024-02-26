@@ -1,6 +1,5 @@
 import 'dart:ui';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:rive/rive.dart';
 
@@ -56,7 +55,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 32.0),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  const Spacer(),
                   const SizedBox(
                     width: 260,
                     child: Column(
@@ -75,6 +76,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     ),
                   ),
 
+                  const Spacer(flex: 2),
+
                   //Animated Button
                   AnimatedBtn(
                     btnAnimationController: _btnAnimationController,
@@ -82,6 +85,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       _btnAnimationController.isActive = true;
                     },
                   ),
+
+                  const Spacer(),
                 ],
               ),
             ),
