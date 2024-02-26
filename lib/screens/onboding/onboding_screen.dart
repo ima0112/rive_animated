@@ -40,6 +40,32 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               child: const SizedBox(),
             ),
           ),
+
+          const SafeArea(
+              child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 32.0),
+            child: Column(
+              children: [
+                SizedBox(
+                  width: 260,
+                  child: Column(
+                    children: [
+                      Text(
+                        'Learn design & code',
+                        style: TextStyle(
+                          fontSize: 60,
+                          fontFamily: 'Poppins',
+                          height: 1.2,
+                        ),
+                      ),
+                      SizedBox(height: 16),
+                      Text("Don't skip design. Build real apps with Flutter.")
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ))
         ],
       ),
     );
